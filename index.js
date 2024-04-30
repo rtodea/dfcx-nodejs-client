@@ -48,66 +48,50 @@ const sendMessageViaHttpToDFCX =(request) => (text) => {
 };
 
 const unpackAgentResponse = (response) => {
-
   return response?.queryResult.responseMessages[0].text.text[0];
 };
-const uniqueSessionId = () => {
 
+const uniqueSessionId = () => {
   return v4().split('-')[0];
 }
-const googleStoreSession = async () => {
 
+const startUserAndAgentInteraction = async (sendMessage, userText) => {
+  console.log('user says:', userText);
+  const agentResponse = await sendMessage(userText);
+  console.log('agent says:', unpackAgentResponse(agentResponse));
+}
+
+const startUserAndAgentInteractionLoop = async (sendMessage, messagesFromUser) => {
+  for (const message of messagesFromUser) {
+    await startUserAndAgentInteraction(sendMessage, message);
+  }
+}
+
+const googleStoreSession = async () => {
   const sessionId = uniqueSessionId();
   const currentSession = sessionPath(sessionId, DEV_Google_Store_AgentId);
   const sendMessage = sendMessageViaHttpToDFCX(request(currentSession));
 
-  console.log('Agent Session', currentSession);
-  const messagesFromUser = [
+  console.log('DEV_Google_Store_AgentId', 'Agent Session', currentSession);
+  await startUserAndAgentInteractionLoop(sendMessage, [
     'hi',
-    'tell me about the latest Pixel phone'
-  ];
-
-  console.log('user says:', messagesFromUser[0]);
-  let agentResponse = await sendMessage(messagesFromUser[0]);
-  console.log('agent says:', unpackAgentResponse(agentResponse));
-
-  console.log('user says:', messagesFromUser[1]);
-  agentResponse = await sendMessage(messagesFromUser[1]);
-  console.log('agent says:', unpackAgentResponse(agentResponse));
+    'do you have phones?'
+  ]);
 }
 
 const bloodDonationSession = async () => {
-  const messagesFromUser = [
+  const sessionId = uniqueSessionId();
+  const currentSession = sessionPath(sessionId, DEV_Lifeblood_Donation_Agent_AgentId);
+  const sendMessage = sendMessageViaHttpToDFCX(request(currentSession));
+  console.log('DEV_Lifeblood_Donation_Agent', 'Agent Session', currentSession);
+
+  await startUserAndAgentInteractionLoop(sendMessage, [
     'hi',
     'I want to donate blood',
     'Yes', // I want to take the eligibility quiz
     '35', // My age
     '74' // My weight
-  ];
-  const sessionId = uniqueSessionId();
-  const currentSession = sessionPath(sessionId, DEV_Lifeblood_Donation_Agent_AgentId);
-  const sendMessage = sendMessageViaHttpToDFCX(request(currentSession));
-
-  console.log('Agent Session', currentSession);
-  console.log('user says:', messagesFromUser[0]);
-  let agentResponse = await sendMessage(messagesFromUser[0]);
-  console.log('agent says:', unpackAgentResponse(agentResponse));
-
-  console.log('user says:', messagesFromUser[1]);
-  agentResponse = await sendMessage(messagesFromUser[1]);
-  console.log('agent says:', unpackAgentResponse(agentResponse));
-
-  console.log('user says:', messagesFromUser[2]);
-  agentResponse = await sendMessage(messagesFromUser[2]);
-  console.log('agent says:', unpackAgentResponse(agentResponse));
-
-  console.log('user says:', messagesFromUser[3]);
-  agentResponse = await sendMessage(messagesFromUser[3]);
-  console.log('agent says:', unpackAgentResponse(agentResponse));
-
-  console.log('user says:', messagesFromUser[4]);
-  agentResponse = await sendMessage(messagesFromUser[4]);
-  console.log('agent says:', unpackAgentResponse(agentResponse));
+  ]);
 }
 
 const main = async () => {
