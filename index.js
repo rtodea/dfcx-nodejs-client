@@ -1,5 +1,6 @@
 const {SessionsClient} = require('@google-cloud/dialogflow-cx');
 const {v4} = require('uuid');
+const {VertexAI, HarmCategory, HarmBlockThreshold} = require("@google-cloud/vertexai");
 // kAdedqVo-...
 const DEV_Google_Store_AgentId = '7abed82d-1336-459d-80d3-46b55841b0cc';
 const DEV_Lifeblood_Donation_Agent_AgentId = '2ca1d6d4-433b-46a6-8c75-2752329c438c';
@@ -38,7 +39,7 @@ const sendMessageViaStreamToDFCX = (request) => (text) => {
   })
 };
 
-const sendMessageViaHttpToDFCX =(request) => (text) => {
+const sendMessageViaHttpToDFCX = (request) => (text) => {
   return client.detectIntent(request(text)).then(([response]) => {
     console.log('agent response:', response);
     return response;
@@ -110,39 +111,41 @@ const bloodDonationSession = async () => {
   console.log('agent says:', unpackAgentResponse(agentResponse));
 }
 
+async function streamGenerateContent() {
+  const {
+    FunctionDeclarationSchemaType,
+    HarmBlockThreshold,
+    HarmCategory,
+    VertexAI
+  } = require('@google-cloud/vertexai');
 
-const {
-  FunctionDeclarationSchemaType,
-  HarmBlockThreshold,
-  HarmCategory,
-  VertexAI
-} = require('@google-cloud/vertexai');
+  const project = 'api-project-604594715070';
+  const location = 'us-central1';
+  const textModel = 'gemini-1.0-pro';
+  const visionModel = 'gemini-1.0-pro-vision';
 
-const project = 'api-project-604594715070';
-const location = 'global';
-const textModel =  'gemini-1.0-pro';
-const visionModel = 'gemini-1.0-pro-vision';
-
-const vertexAI = new VertexAI({project: project, location: location});
+  const vertexAI = new VertexAI({project: project, location: location});
 
 // Instantiate Gemini models
-const generativeModel = vertexAI.getGenerativeModel({
-  model: textModel,
-  // The following parameters are optional
-  // They can also be passed to individual content generation requests
-  safetySettings: [{category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE}],
-  generationConfig: {maxOutputTokens: 256},
-});
+  const generativeModel = vertexAI.getGenerativeModel({
+    model: textModel,
+    // The following parameters are optional
+    // They can also be passed to individual content generation requests
+    safetySettings: [{
+      category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+      threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
+    }],
+    generationConfig: {maxOutputTokens: 256},
+  });
 
-const generativeVisionModel = vertexAI.getGenerativeModel({
-  model: visionModel,
-});
+  const generativeVisionModel = vertexAI.getGenerativeModel({
+    model: visionModel,
+  });
 
-const generativeModelPreview = vertexAI.preview.getGenerativeModel({
-  model: textModel,
-});
+  const generativeModelPreview = vertexAI.preview.getGenerativeModel({
+    model: textModel,
+  });
 
-async function streamGenerateContent() {
   const request = {
     contents: [{role: 'user', parts: [{text: 'How are you doing today?'}]}],
   };
@@ -154,10 +157,46 @@ async function streamGenerateContent() {
   console.log('aggregated response: ', JSON.stringify(aggregatedResponse));
 }
 
+async function simpleAiPlatformCall() {
+  const {EndpointServiceClient} = require('@google-cloud/aiplatform');
+
+  const projectId = 'api-project-604594715070';
+  const location = 'global'
+
+// Specifies the location of the api endpoint
+  const clientOptions = {
+    apiEndpoint: 'us-central1-aiplatform.googleapis.com',
+  };
+  const client = new EndpointServiceClient(clientOptions);
+
+  async function listEndpoints() {
+    // Configure the parent resource
+    const parent = `projects/${projectId}/locations/${location}`;
+    const request = {
+      parent,
+    };
+
+    // Get and print out a list of all the endpoints for this resource
+    const [result] = await client.listEndpoints(request);
+    for (const endpoint of result) {
+      console.log(`\nEndpoint name: ${endpoint.name}`);
+      console.log(`Display name: ${endpoint.displayName}`);
+      if (endpoint.deployedModels[0]) {
+        console.log(
+          `First deployed model: ${endpoint.deployedModels[0].model}`
+        );
+      }
+    }
+  }
+
+  return listEndpoints();
+}
+
 const main = async () => {
- /* await googleStoreSession();
-  await bloodDonationSession();*/
+  /* await googleStoreSession();
+   await bloodDonationSession();*/
   await streamGenerateContent();
+  // await simpleAiPlatformCall();
 }
 
 main();
