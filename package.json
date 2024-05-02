@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/dialogflow-cx": "^4.6.0"
+    "@google-cloud/dialogflow-cx": "^4.6.0",
+    "@google-cloud/vertexai": "^1.1.0"
   }
 }
