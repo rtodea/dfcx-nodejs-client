@@ -14,6 +14,9 @@ const sessionPath = (sessionId, agentId) => {
   return `projects/${projectId}/locations/${location}/agents/${agentId}/sessions/${sessionId}`;
 }
 
+const {Datastore} = require('@google-cloud/datastore');
+const datastore = new Datastore({databaseId: 'sg-test-datastore-1'});
+
 const request = (sessionPath) => (text) => ({
   session: sessionPath,
   queryInput:
@@ -192,11 +195,93 @@ async function simpleAiPlatformCall() {
   return listEndpoints();
 }
 
+
+async function dialogflowDataStoreResponse()  {
+
+  const dialogflow = require('@google-cloud/dialogflow');
+  const sessionsClient = new dialogflow.SessionsClient({apiVersion: 'v2'});
+
+  const sessionId = uniqueSessionId();
+  //const prompt = 'What is the weather in San Francisco?';
+
+  const request = {
+    session: sessionsClient.projectAgentSessionPath('api-project-604594715070', sessionId),
+    queryInput: {
+      text: {
+        text: 'What is the eligibility for blood donation ?',
+      },
+    },
+  };
+
+  const [response] = await sessionsClient.queryEntities(request);
+
+  response.queryResult.fulfillmentMessages.forEach(message => {
+    console.log(message.text);
+  });
+}
+
+async function dialogFlowKnowledgebaseResponse()  {
+  const dialogflow = require('@google-cloud/dialogflow');
+  const knowledgeBasesClient = new dialogflow.KnowledgeBasesClient();
+
+  const knowledgeBaseName = 'YOUR_KNOWLEDGE_BASE_NAME';
+  const query = 'What is the weather in San Francisco?';
+
+  const request = {
+    knowledgeBaseName: knowledgeBaseName,
+    query: query,
+  };
+
+  const [response] = await knowledgeBasesClient.searchKnowledge(request);
+
+  response.answers.forEach(answer => {
+    console.log(answer.answer);
+  });
+}
+
+
+async function quickstart() {
+
+ /* const datastore = new Datastore();*/
+  // The kind for the new entity
+  const kind = 'Task';
+  // The name/ID for the new entity
+  const name = 'sampletask1';
+  const taskKey = datastore.key([kind, name]);
+
+  // Prepares the new entity
+  const task = {
+    key: taskKey,
+    data: [
+      {
+        name: 'description',
+        value: 'What is the eligibility of blood donation ?',
+        excludeFromIndexes: true,
+      },
+    ],
+  };
+
+  // Saves the entity
+  await datastore.save(task);
+  console.log(`Saved ${task.key.name}: ${task.data[0].value}`);
+}
+
 const main = async () => {
   /* await googleStoreSession();
    await bloodDonationSession();*/
   await streamGenerateContent();
   // await simpleAiPlatformCall();
+
+ // await quickstart();
+
+ // await dialogflowDataStoreResponse();
+
+
 }
 
 main();
+
+
+
+
+
