@@ -266,15 +266,55 @@ async function quickstart() {
   console.log(`Saved ${task.key.name}: ${task.data[0].value}`);
 }
 
+async function appBuilderResponse() {
+  const languageCode = 'en'
+  const location = 'global';
+  const sessionId = Math.random().toString(36).substring(7);
+  const query = 'What are the types of gaming laptops which you have ?'
+
+  const sessionPath = client.projectLocationAgentSessionPath(
+      'api-project-604594715070',
+      location,
+      '565978b6-f65a-4031-980a-441032ca038e',
+      sessionId
+  );
+  const request = {
+    session: sessionPath,
+    queryInput: {
+      text: {
+        text: query,
+      },
+      languageCode,
+    },
+  };
+
+  const [response] = await client.detectIntent(request);
+  for (const message of response.queryResult.responseMessages) {
+    if (message.text) {
+      console.log(`Agent Response: ${message.text.text}`);
+    }
+  }
+  if (response.queryResult.match.intent) {
+    console.log(
+        `Matched Intent: ${response.queryResult.match.intent.displayName}`
+    );
+  }
+  console.log(
+      `Current Page: ${response.queryResult.currentPage.displayName}`
+  );
+}
+
 const main = async () => {
   /* await googleStoreSession();
    await bloodDonationSession();*/
-  await streamGenerateContent();
+ // await streamGenerateContent();
   // await simpleAiPlatformCall();
 
  // await quickstart();
 
  // await dialogflowDataStoreResponse();
+
+  await appBuilderResponse();
 
 
 }
