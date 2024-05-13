@@ -182,6 +182,8 @@ async function appBuilderResponse() {
   const currentSession = sessionPath(sessionId, DEV_Prebuilt_Retail_Playbook_AgentId);
   const sendMessage = sendMessageViaHttpToDFCX(request(currentSession));
 
+  console.log('DEV_Prebuilt_Retail_Playbook_AgentId', 'Agent Session', currentSession);
+
   await startUserAndAgentInteractionLoop(sendMessage, [
     'Hi, I want to select a product',
     'I want to search for a product',
@@ -195,8 +197,9 @@ async function appBuilderResponse() {
 }
 
 const main = async () => {
-  /* await googleStoreSession();
-   await bloodDonationSession();*/
+
+  await googleStoreSession();
+  await bloodDonationSession();
   // await streamGenerateContent();
   // await simpleAiPlatformCall();
   await appBuilderResponse();
