@@ -4,6 +4,7 @@ const {VertexAI, HarmCategory, HarmBlockThreshold} = require("@google-cloud/vert
 // kAdedqVo-...
 const DEV_Google_Store_AgentId = '7abed82d-1336-459d-80d3-46b55841b0cc';
 const DEV_Lifeblood_Donation_Agent_AgentId = '2ca1d6d4-433b-46a6-8c75-2752329c438c';
+const DEV_Prebuilt_Retail_Playbook_AgentId = '565978b6-f65a-4031-980a-441032ca038e';
 
 // The credentials are loaded from GOOGLE_APPLICATION_CREDENTIALS env variable
 const client = new SessionsClient();
@@ -41,7 +42,7 @@ const sendMessageViaStreamToDFCX = (request) => (text) => {
 
 const sendMessageViaHttpToDFCX = (request) => (text) => {
   return client.detectIntent(request(text)).then(([response]) => {
-    console.log('agent response:', response);
+    // console.log('agent response:', response);
     return response;
   }).catch((e) => {
     console.error(e)
@@ -176,11 +177,29 @@ async function simpleAiPlatformCall() {
   return listEndpoints();
 }
 
+async function appBuilderResponse() {
+  const sessionId = uniqueSessionId();
+  const currentSession = sessionPath(sessionId, DEV_Prebuilt_Retail_Playbook_AgentId);
+  const sendMessage = sendMessageViaHttpToDFCX(request(currentSession));
+
+  await startUserAndAgentInteractionLoop(sendMessage, [
+    'Hi, I want to select a product',
+    'I want to search for a product',
+    'What kind of products do you have?',
+    'I am interested in laptops',
+    'What types of laptops do you have?',
+    'What business laptops do you have?',
+    'What is the RAM on these?',
+    'Okay, and what is the price?',
+  ]);
+}
+
 const main = async () => {
   /* await googleStoreSession();
    await bloodDonationSession();*/
-  await streamGenerateContent();
+  // await streamGenerateContent();
   // await simpleAiPlatformCall();
+  await appBuilderResponse();
 }
 
 main();
