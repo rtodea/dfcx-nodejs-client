@@ -1,3 +1,13 @@
+import {
+  request,
+  sendMessageViaHttpToDFCX,
+  sessionPath,
+  startUserAndAgentInteractionLoop,
+  uniqueSessionId
+} from "../common.js";
+
+const DEV_Prebuilt_Retail_Playbook_AgentId = '565978b6-f65a-4031-980a-441032ca038e';
+
 async function appBuilderFuncToolInvocation(){
   const sessionId = uniqueSessionId();
   const currentSession = sessionPath(sessionId, DEV_Prebuilt_Retail_Playbook_AgentId);
