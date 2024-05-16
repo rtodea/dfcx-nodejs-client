@@ -44,7 +44,7 @@ export const sendMessageViaStreamToDFCX = (request) => (text) => {
 };
 
 export const unpackAgentResponse = (response) => {
-  return response?.queryResult.responseMessages[0].text.text[0];
+  return response?.queryResult?.responseMessages?.[0].text?.text?.[0] || 'NO_TEXT';
 };
 
 export const uniqueSessionId = () => {
