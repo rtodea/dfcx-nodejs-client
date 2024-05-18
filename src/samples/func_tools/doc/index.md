@@ -44,3 +44,11 @@ But looking into the `DetectIntentRequest` type definition from the
 
 ```
 there is a mismatch.
+
+We also see this behavior:
+
+```
+Error: 3 INVALID_ARGUMENT: 
+com.google.apps.framework.request.BadRequestException: 
+Session is waiting for tool call result of tool, 05edea2d-dbc2-4ed9-ba62-c0c50dcf2450, and action, TestToolVision1.
+```
