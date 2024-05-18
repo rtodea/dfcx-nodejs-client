@@ -1,4 +1,4 @@
-import {SessionsClient} from '@google-cloud/dialogflow-cx';
+import {SessionsClient} from '@google-cloud/dialogflow-cx/build/src/v3beta1/sessions_client.js';
 import {v4} from 'uuid';
 
 // The credentials are loaded from GOOGLE_APPLICATION_CREDENTIALS env variable
@@ -18,7 +18,12 @@ export const request = (sessionPath) => (text) => ({
         text,
       },
       languageCode: 'en',
+    },
+  queryParams: {
+    parameters: {
+
     }
+  }
 });
 
 export const sendMessageViaHttpToDFCX = (request) => (text) => {

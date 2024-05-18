@@ -11,11 +11,6 @@ nvm install # to install the right Node version
 npm ci # to install the dependencies
 ```
 
-## Bots
-
-1. Google Store 
-2. Blood Donation Agent
-
 ## Setup
 
 ```bash
@@ -29,6 +24,27 @@ GOOGLE_APPLICATION_CREDENTIALS=/home/robert/git/mi/media-soup-server/src/secrets
 
 ## Usage
 
+Go into one for the `./src/samples` and run a particular sample:
+
 ```bash
-node index.js
+node ./src/samples/google_store.js
 ```
+
+## Proxy for Debugging HTTP SDK Calls
+
+Install latest version of `mitmproxy` (which contains support for ProtoBuffer requests)
+
+Run `mitmproxy`
+```bash
+mitmweb --listen-port 8888
+```
+
+Add extra variables to the env before running any script, for example:
+```bash
+HTTP_PROXY=http://localhost:8888
+HTTPS_PROXY=http://localhost:8888
+NODE_EXTRA_CA_CERTS=/home/robert/.mitmproxy/mitmproxy-ca-cert.pem
+```
+
+> Please note the `NODE_EXTRA_CA_CERTS` pointing to the `mitmproxy` location of own certificates
+> Without this extra indication, any HTTPS call will fail
