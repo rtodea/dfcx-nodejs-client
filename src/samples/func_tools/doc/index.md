@@ -1,5 +1,13 @@
 # Using `FuncTools` with Agent Builder Agent App (ABAA) bots
 
+## References
+
+1. [API availability](https://cloud.google.com/dialogflow/vertex/docs/quick/api)
+
+
+
+## Documentation
+
 According to the [official documentation](https://cloud.google.com/dialogflow/vertex/docs/concept/tools#client-side):
 
 ```
