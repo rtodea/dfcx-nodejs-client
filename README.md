@@ -69,3 +69,5 @@ Content-Type: application/json
 
 The `Authorization: Bearer <jwt>` line will need to be updated with the correct `<jwt>`.
 For now this was intercepted from the gRPC SDK calls through `mitmproxy`.
+
+<img src="./src/samples/func_tools/doc/img/mitmproxy-screenshot.png">
