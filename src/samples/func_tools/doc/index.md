@@ -60,3 +60,34 @@ Error: 3 INVALID_ARGUMENT:
 com.google.apps.framework.request.BadRequestException: 
 Session is waiting for tool call result of tool, 05edea2d-dbc2-4ed9-ba62-c0c50dcf2450, and action, TestToolVision1.
 ```
+
+## Sample REST call
+
+```http request
+POST https://dialogflow.clients6.google.com/v3alpha1/projects/api-project-604594715070/locations/global/agents/565978b6-f65a-4031-980a-441032ca038e/sessions/1a3234-f1f-ba9-15e-c17395cd0:detectIntent?
+    alt=json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjRmYjk2YjA1NzFlMTQ2OWRjOTc2NDQyOGZiZTA1ZDkwZGMyNjczNDAifQ.eyJpc3MiOiJhcGktcHJvamVjdC02MDQ1OTQ3MTUwNzBAYXBwc3BvdC5nc2VydmljZWFjY291bnQuY29tIiwic3ViIjoiYXBpLXByb2plY3QtNjA0NTk0NzE1MDcwQGFwcHNwb3QuZ3NlcnZpY2VhY2NvdW50LmNvbSIsImF1ZCI6Imh0dHBzOi8vZGlhbG9nZmxvdy5nb29nbGVhcGlzLmNvbS8iLCJleHAiOjE3MTYzODQ2MTksImlhdCI6MTcxNjM4MTAxOX0.s3uj8E6AM77BQvWcXg8PZx81wZmVlH6ewcbvy2yO8Q3BrD7IhGv2B_kcPn6cCiKSvteB2U-OoRTNWa2-TYhsvcdKARmBXWlOSt7SWW_HK9clqKQCpIAPiTwWKbrH7D8B7VUfpwB20E-2a1Imbkyd9eE5qn-toNNeq0YxA2Wg1EZURjhkMGOAKGmKRPfVVAawGLnBEzvk5jW4Vwu8AkCqXYtRupzBUWjCnc2jbevAdH_Bxo4V3N9IE6NVXWI123e1ux4DwXzkN9sD0A8sWXj2mpagNi7_QWIS-bdk-ptHU1SSXHFmHtzGXaC9P8CwCzmGIDlXZZ_RkPUdHnNmd-br9w
+Content-Type: application/json
+
+{
+  "debugMode":true,
+  "queryInput": {
+    "languageCode":"en-US",
+    "text": {
+      "text":"I want to know the temperature in New York."
+    }
+  },
+  "queryParams": {
+    "llmModelSettings": {"model":"gemini-pro"},
+    "playbookStateOverride": {
+      "currentSessionTrace": {
+        "actions": [
+          {"userUtterance":{"text":"Hello!"}},
+          {"agentUtterance":{"text":"Hi, I'm your Google shopping assistant. I can help you search for items and place orders. How can I help you today?"}},
+        ],
+        "name":"projects/api-project-604594715070/locations/global/agents/565978b6-f65a-4031-980a-441032ca038e/playbooks/00000000-0000-0000-0000-000000000000/examples/-"
+      }
+    }
+  }
+}
+```
