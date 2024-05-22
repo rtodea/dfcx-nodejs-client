@@ -61,7 +61,7 @@ Content-Type: application/json
 
 {
   "queryInput": {
-    "text": {"text": "Can you tell me the temperature"},
+    "text": {"text": "Can you tell me the temperature"}, 
     "languageCode": "en"
   }
 }
