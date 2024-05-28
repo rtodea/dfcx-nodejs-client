@@ -1,0 +1,20 @@
+{
+    "debugMode": true,
+    "queryInput": {
+        "languageCode": "en-US",
+        "toolCallResult": {
+            "action": "water-quality",
+            "outputParameters": {
+                "analysis": "best",
+                "score": 10,
+                "media_url": ""
+            },
+            "tool": "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/tools/b0b7e11c-3874-4669-abd0-bcbe8783360c"
+        }
+    },
+    "queryParams": {
+        "llmModelSettings": {
+            "model": "gemini-pro"
+        }
+    }
+}

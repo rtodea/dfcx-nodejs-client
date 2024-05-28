@@ -1,0 +1,78 @@
+{
+  "responseId": "50230e2e-03dd-45dd-b71a-ee18ffd203a3",
+  "queryResult": {
+    "text": "Hi!",
+    "languageCode": "en",
+    "responseMessages": [
+      {
+        "text": {
+          "text": [
+            "Hi there! How can I help you today?"
+          ]
+        },
+        "source": "VIRTUAL_AGENT"
+      }
+    ],
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "Response Id": "50230e2e-03dd-45dd-b71a-ee18ffd203a3",
+      "Execution Trace": [
+        "Got action: \"respond\" from LLM, so responding to user to get output.\n\naction: respond\ninput: Hi there! How can I help you today?\n"
+      ],
+      "Session Id": "4bd247-eb6-e04-cac-fa0cc35b0"
+    },
+    "match": {
+      "matchType": "PLAYBOOK",
+      "confidence": 1
+    },
+    "advancedSettings": {
+      "loggingSettings": {
+        "enableInteractionLogging": true
+      }
+    },
+    "generativeInfo": {
+      "currentPlaybooks": [
+        "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/playbooks/00000000-0000-0000-0000-000000000000"
+      ],
+      "actionTracingInfo": {
+        "name": "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/playbooks/-/examples/-",
+        "actions": [
+          {
+            "userUtterance": {
+              "text": "Hi!"
+            }
+          },
+          {
+            "agentUtterance": {
+              "text": "Hi there! How can I help you today?"
+            }
+          }
+        ],
+        "conversationState": "OUTPUT_STATE_PENDING"
+      }
+    }
+  },
+  "responseType": "FINAL",
+  "ulmCalls": 1,
+  "features": [
+    {
+      "feature": "PLAYBOOK",
+      "metrics": {
+        "playbook.max_output_tokens_count": 5000,
+        "playbook.output_tokens_count": [
+          14
+        ],
+        "playbook.llm_count": 1,
+        "playbook.states": [
+          "SUCCEEDED"
+        ],
+        "playbook.total_output_tokens_count": 14,
+        "playbook.input_tokens_count": [
+          2516
+        ],
+        "playbook.total_input_tokens_count": 2516,
+        "playbook.max_input_tokens_count": 150000
+      }
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "responseId": "a8246230-b8c9-4fc6-b71a-78d4d792e71e",
+  "queryResult": {
+    "languageCode": "en",
+    "responseMessages": [
+      {
+        "text": {
+          "text": [
+            "The water quality in New York is excellent, with a score of 10 out of 10."
+          ]
+        },
+        "source": "VIRTUAL_AGENT"
+      }
+    ],
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "Session Id": "4bd247-eb6-e04-cac-fa0cc35b0",
+      "Response Id": "a8246230-b8c9-4fc6-b71a-78d4d792e71e",
+      "Execution Trace": [
+        "Got action: \"respond\" from LLM, so responding to user to get output.\n\naction: respond\ninput: The water quality in New York is excellent, with a score of 10 out of 10.\n"
+      ]
+    },
+    "match": {
+      "matchType": "PLAYBOOK",
+      "confidence": 1
+    },
+    "advancedSettings": {
+      "loggingSettings": {
+        "enableInteractionLogging": true
+      }
+    },
+    "generativeInfo": {
+      "currentPlaybooks": [
+        "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/playbooks/00000000-0000-0000-0000-000000000000"
+      ],
+      "actionTracingInfo": {
+        "name": "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/playbooks/-/examples/-",
+        "actions": [
+          {
+            "userUtterance": {
+              "text": "Can you tell me the water quality in New York?"
+            }
+          },
+          {
+            "toolUse": {
+              "tool": "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/tools/b0b7e11c-3874-4669-abd0-bcbe8783360c",
+              "action": "water-quality",
+              "inputParameters": [
+                {
+                  "name": "functionParameter",
+                  "value": {
+                    "zipcode": 10001
+                  }
+                }
+              ],
+              "outputParameters": [
+                {
+                  "name": "functionParameter",
+                  "value": {
+                    "media_url": "",
+                    "score": 10,
+                    "analysis": "best"
+                  }
+                }
+              ],
+              "inputActionParameters": {
+                "functionParameter": {
+                  "zipcode": 10001
+                }
+              },
+              "outputActionParameters": {
+                "functionParameter": {
+                  "media_url": "",
+                  "score": 10,
+                  "analysis": "best"
+                }
+              }
+            }
+          },
+          {
+            "agentUtterance": {
+              "text": "The water quality in New York is excellent, with a score of 10 out of 10."
+            }
+          }
+        ],
+        "conversationState": "OUTPUT_STATE_PENDING"
+      }
+    }
+  },
+  "responseType": "FINAL",
+  "ulmCalls": 1,
+  "features": [
+    {
+      "feature": "PLAYBOOK",
+      "metrics": {
+        "playbook.states": [
+          "SUCCEEDED"
+        ],
+        "playbook.llm_count": 1,
+        "playbook.total_input_tokens_count": 2592,
+        "playbook.total_output_tokens_count": 26,
+        "playbook.max_output_tokens_count": 5000,
+        "playbook.output_tokens_count": [
+          26
+        ],
+        "playbook.input_tokens_count": [
+          2592
+        ],
+        "playbook.max_input_tokens_count": 150000
+      }
+    }
+  ]
+}
