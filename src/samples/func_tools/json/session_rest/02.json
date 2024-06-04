@@ -1,0 +1,26 @@
+{
+  "responseId": "85c1fec5-36fe-47cc-9e7f-633801e9704b",
+  "queryResult": {
+    "text": "New York",
+    "languageCode": "en",
+    "responseMessages": [
+      {}
+    ],
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "Session Id": "a2e55bba",
+      "Response Id": "85c1fec5-36fe-47cc-9e7f-633801e9704b"
+    },
+    "match": {
+      "matchType": "PLAYBOOK",
+      "confidence": 1
+    },
+    "advancedSettings": {
+      "loggingSettings": {
+        "enableStackdriverLogging": true,
+        "enableInteractionLogging": true
+      }
+    }
+  },
+  "responseType": "FINAL"
+}

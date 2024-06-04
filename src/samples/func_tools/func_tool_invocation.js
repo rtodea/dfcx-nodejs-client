@@ -4,21 +4,21 @@ import {
   sessionPath,
   startUserAndAgentInteractionLoop,
   uniqueSessionId
-} from "../common.js";
+} from "../../common.js";
 
-const DEV_Prebuilt_Retail_Playbook_AgentId = '565978b6-f65a-4031-980a-441032ca038e';
+const DEV_Agent_FuncTool = 'ab6334d6-124b-4a1b-b79c-c80d8a1638ef';
 
 async function appBuilderFuncToolInvocation(){
   const sessionId = uniqueSessionId();
-  const currentSession = sessionPath(sessionId, DEV_Prebuilt_Retail_Playbook_AgentId);
+  const currentSession = sessionPath(sessionId, DEV_Agent_FuncTool);
   const sendMessage = sendMessageViaHttpToDFCX(request(currentSession));
 
-  console.log('DEV_Prebuilt_Retail_Playbook_AgentId', 'Agent Session', currentSession);
+  console.log('DEV_Agent_FuncTool', 'Agent Session', currentSession);
 
   await startUserAndAgentInteractionLoop(sendMessage, [
-    'Hi! I want to buy a laptop.',
-    'I want to ask for the temperature of a city like New York?',
-    'New York'
+      'Hi!',
+      'I live in New York City. Can you tell me the water quality in my area?',
+      'Are you sure this is correct?'
   ]);
 }
 

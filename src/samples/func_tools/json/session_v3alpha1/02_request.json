@@ -1,0 +1,31 @@
+{
+    "debugMode": true,
+    "queryInput": {
+        "languageCode": "en-US",
+        "text": {
+            "text": "Can you tell me the water quality in New York?"
+        }
+    },
+    "queryParams": {
+        "llmModelSettings": {
+            "model": "gemini-pro"
+        },
+        "playbookStateOverride": {
+            "currentSessionTrace": {
+                "actions": [
+                    {
+                        "userUtterance": {
+                            "text": "Hi!"
+                        }
+                    },
+                    {
+                        "agentUtterance": {
+                            "text": "Hi there! How can I help you today?"
+                        }
+                    }
+                ],
+                "name": "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/playbooks/00000000-0000-0000-0000-000000000000/examples/-"
+            }
+        }
+    }
+}

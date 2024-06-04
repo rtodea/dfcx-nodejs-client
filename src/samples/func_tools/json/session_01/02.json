@@ -1,0 +1,62 @@
+{
+  "responseId": "d30932ec-d909-40e2-ba52-533fd2b299d9",
+  "queryResult": {
+    "responseMessages": [
+      {
+        "responseType": "RESPONSE_TYPE_UNSPECIFIED",
+        "channel": ""
+      }
+    ],
+    "webhookPayloads": [],
+    "webhookStatuses": [],
+    "webhookIds": [],
+    "webhookDisplayNames": [],
+    "webhookLatencies": [],
+    "webhookTags": [],
+    "languageCode": "en",
+    "parameters": null,
+    "currentPage": null,
+    "intent": null,
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "fields": {
+        "Response Id": {
+          "stringValue": "d30932ec-d909-40e2-ba52-533fd2b299d9",
+          "kind": "stringValue"
+        },
+        "Session Id": {
+          "stringValue": "f0c2b2ac",
+          "kind": "stringValue"
+        }
+      }
+    },
+    "match": {
+      "intent": null,
+      "parameters": null,
+      "resolvedInput": "",
+      "matchType": 9,
+      "confidence": 1,
+      "event": ""
+    },
+    "sentimentAnalysisResult": null,
+    "advancedSettings": {
+      "audioExportGcsDestination": null,
+      "dtmfSettings": null,
+      "loggingSettings": {
+        "enableStackdriverLogging": true,
+        "enableInteractionLogging": true
+      }
+    },
+    "currentFlow": null,
+    "allowAnswerFeedback": false,
+    "text": "I want to ask for the temperature of a city like New York?",
+    "query": "text"
+  },
+  "outputAudio": {
+    "type": "Buffer",
+    "data": []
+  },
+  "outputAudioConfig": null,
+  "responseType": "FINAL",
+  "allowCancellation": false
+}

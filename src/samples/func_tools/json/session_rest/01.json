@@ -1,0 +1,32 @@
+{
+  "responseId": "b138fea1-1695-47ec-80dc-bbc0f1c10daf",
+  "queryResult": {
+    "text": "I want to ask for the temperature of a city like New York.",
+    "languageCode": "en",
+    "responseMessages": [
+      {
+        "text": {
+          "text": [
+            "Sure, I can help you with that. What city would you like to know the temperature of?"
+          ]
+        }
+      }
+    ],
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "Session Id": "a2e55bba",
+      "Response Id": "b138fea1-1695-47ec-80dc-bbc0f1c10daf"
+    },
+    "match": {
+      "matchType": "PLAYBOOK",
+      "confidence": 1
+    },
+    "advancedSettings": {
+      "loggingSettings": {
+        "enableStackdriverLogging": true,
+        "enableInteractionLogging": true
+      }
+    }
+  },
+  "responseType": "FINAL"
+}

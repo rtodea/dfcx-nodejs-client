@@ -1,0 +1,20 @@
+{
+    "debugMode": true,
+    "queryInput": {
+        "languageCode": "en-US",
+        "text": {
+            "text": "Hi!"
+        }
+    },
+    "queryParams": {
+        "llmModelSettings": {
+            "model": "gemini-pro"
+        },
+        "playbookStateOverride": {
+            "currentSessionTrace": {
+                "actions": [],
+                "name": "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/playbooks/00000000-0000-0000-0000-000000000000/examples/-"
+            }
+        }
+    }
+}
