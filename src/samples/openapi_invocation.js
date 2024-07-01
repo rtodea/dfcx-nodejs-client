@@ -17,7 +17,9 @@ async function appBuilderFuncToolInvocation(){
 
   await startUserAndAgentInteractionLoop(sendMessage, [
     'yes',
+    // What are your first 8 digits?
     '4242 4242',
+    // The card issuer is Stripe Payments Uk Limited.
   ]);
 }
 
