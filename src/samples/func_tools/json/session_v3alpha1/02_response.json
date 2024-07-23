@@ -1,0 +1,75 @@
+{
+  "responseId": "87429427-bd86-44e3-9e53-b680b0eaf29a",
+  "queryResult": {
+    "text": "Can you tell me the water quality in New York?",
+    "languageCode": "en",
+    "responseMessages": [
+      {
+        "source": "VIRTUAL_AGENT",
+        "toolCall": {
+          "tool": "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/tools/b0b7e11c-3874-4669-abd0-bcbe8783360c",
+          "action": "water-quality",
+          "inputParameters": {
+            "zipcode": 10001
+          }
+        }
+      }
+    ],
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "Execution Trace": [
+        "Got action: \"water-quality\" from LLM.\n\naction: water-quality\ninput:\n  zipcode: 10001\n"
+      ],
+      "Session Id": "4bd247-eb6-e04-cac-fa0cc35b0",
+      "Response Id": "87429427-bd86-44e3-9e53-b680b0eaf29a"
+    },
+    "match": {
+      "matchType": "PLAYBOOK",
+      "confidence": 1
+    },
+    "advancedSettings": {
+      "loggingSettings": {
+        "enableInteractionLogging": true
+      }
+    },
+    "generativeInfo": {
+      "currentPlaybooks": [
+        "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/playbooks/00000000-0000-0000-0000-000000000000"
+      ],
+      "actionTracingInfo": {
+        "name": "projects/api-project-604594715070/locations/global/agents/ab6334d6-124b-4a1b-b79c-c80d8a1638ef/playbooks/-/examples/-",
+        "actions": [
+          {
+            "userUtterance": {
+              "text": "Can you tell me the water quality in New York?"
+            }
+          }
+        ],
+        "conversationState": "OUTPUT_STATE_PENDING"
+      }
+    }
+  },
+  "responseType": "FINAL",
+  "ulmCalls": 1,
+  "features": [
+    {
+      "feature": "PLAYBOOK",
+      "metrics": {
+        "playbook.input_tokens_count": [
+          2551
+        ],
+        "playbook.max_input_tokens_count": 150000,
+        "playbook.total_output_tokens_count": 16,
+        "playbook.output_tokens_count": [
+          16
+        ],
+        "playbook.states": [
+          "SUCCEEDED"
+        ],
+        "playbook.max_output_tokens_count": 5000,
+        "playbook.llm_count": 1,
+        "playbook.total_input_tokens_count": 2551
+      }
+    }
+  ]
+}

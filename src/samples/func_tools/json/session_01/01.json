@@ -1,0 +1,69 @@
+{
+  "responseId": "834ce80b-2f40-427c-928f-36c04d9d78c7",
+  "queryResult": {
+    "responseMessages": [
+      {
+        "responseType": "RESPONSE_TYPE_UNSPECIFIED",
+        "channel": "",
+        "text": {
+          "text": [
+            "What kind of laptop are you looking for?"
+          ],
+          "allowPlaybackInterruption": false
+        },
+        "message": "text"
+      }
+    ],
+    "webhookPayloads": [],
+    "webhookStatuses": [],
+    "webhookIds": [],
+    "webhookDisplayNames": [],
+    "webhookLatencies": [],
+    "webhookTags": [],
+    "languageCode": "en",
+    "parameters": null,
+    "currentPage": null,
+    "intent": null,
+    "intentDetectionConfidence": 1,
+    "diagnosticInfo": {
+      "fields": {
+        "Response Id": {
+          "stringValue": "834ce80b-2f40-427c-928f-36c04d9d78c7",
+          "kind": "stringValue"
+        },
+        "Session Id": {
+          "stringValue": "f0c2b2ac",
+          "kind": "stringValue"
+        }
+      }
+    },
+    "match": {
+      "intent": null,
+      "parameters": null,
+      "resolvedInput": "",
+      "matchType": 9,
+      "confidence": 1,
+      "event": ""
+    },
+    "sentimentAnalysisResult": null,
+    "advancedSettings": {
+      "audioExportGcsDestination": null,
+      "dtmfSettings": null,
+      "loggingSettings": {
+        "enableStackdriverLogging": true,
+        "enableInteractionLogging": true
+      }
+    },
+    "currentFlow": null,
+    "allowAnswerFeedback": false,
+    "text": "Hi! I want to buy a laptop.",
+    "query": "text"
+  },
+  "outputAudio": {
+    "type": "Buffer",
+    "data": []
+  },
+  "outputAudioConfig": null,
+  "responseType": "FINAL",
+  "allowCancellation": false
+}

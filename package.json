@@ -14,5 +14,8 @@
     "@google-cloud/vertexai": "^1.1.0",
     "uuid": "^9.0.1"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
 }
